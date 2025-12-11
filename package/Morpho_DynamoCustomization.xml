@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>Morpho</name>
+  </assembly>
+  <namespaces>
+    <namespace name="Morpho.Patterns">
+      <category>Morpho.Patterns</category>
+    </namespace>
+    <namespace name="Morpho.Core">
+      <category>Morpho.Core</category>
+    </namespace>
+  </namespaces>
+  <classes>
+    <class name="Morpho.Patterns.StarPolygon">
+      <category>Morpho.Patterns.Islamic</category>
+    </class>
+    <class name="Morpho.Patterns.Rosette">
+      <category>Morpho.Patterns.Islamic</category>
+    </class>
+    <class name="Morpho.Patterns.GirihTile">
+      <category>Morpho.Patterns.Islamic</category>
+    </class>
+    <class name="Morpho.Patterns.Koch">
+      <category>Morpho.Patterns.Fractals</category>
+    </class>
+    <class name="Morpho.Patterns.Sierpinski">
+      <category>Morpho.Patterns.Fractals</category>
+    </class>
+    <class name="Morpho.Patterns.Menger">
+      <category>Morpho.Patterns.Fractals</category>
+    </class>
+  </classes>
+</doc>
+

@@ -1,0 +1,36 @@
+{
+  "license": "MIT",
+  "file_hash": null,
+  "name": "Morpho",
+  "version": "1.0.0",
+  "description": "Generative pattern tools for Dynamo - Create Islamic geometry, fractals, L-systems, reaction-diffusion patterns, and more. Features both high-performance Zero Touch C# nodes and flexible Python nodes.",
+  "group": "Morpho",
+  "keywords": [
+    "geometry",
+    "generative",
+    "pattern",
+    "islamic",
+    "fractal",
+    "l-system",
+    "koch",
+    "sierpinski",
+    "menger",
+    "reaction-diffusion",
+    "spiral",
+    "phyllotaxis",
+    "parametric",
+    "algorithmic"
+  ],
+  "dependencies": [],
+  "contents": "",
+  "engine_version": "4.0.0",
+  "engine": "dynamo",
+  "engine_metadata": "",
+  "site_url": "https://github.com/morpho-dynamo/Morpho",
+  "repository_url": "https://github.com/morpho-dynamo/Morpho",
+  "contains_binaries": true,
+  "node_libraries": [
+    "Morpho, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
+

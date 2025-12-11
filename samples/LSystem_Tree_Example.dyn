@@ -1,0 +1,377 @@
+{
+  "Uuid": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+  "IsCustomNode": false,
+  "Description": "Example demonstrating L-System tree generation with Morpho Python nodes",
+  "Name": "LSystem_Tree_Example",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# L-System Tree Generator using Morpho\n# \n# This Python node uses the Morpho L-System library to generate\n# procedural tree and plant structures.\n#\n# Inputs:\n#   IN[0] - Preset name: \"tree\", \"fern\", \"bush\", \"dragon\", etc.\n#   IN[1] - Start point (Point)\n#   IN[2] - Iterations (int) - more = more detail but slower\n#   IN[3] - Segment length (double)\n#   IN[4] - Length decay (double) - how much branches shrink\n\nimport clr\nclr.AddReference('ProtoGeometry')\nfrom Autodesk.DesignScript.Geometry import Point\n\nimport sys\nimport os\n\n# Add Morpho Python path\n# Adjust this path to your Morpho package location\nmorpho_path = r'C:\\Workspace\\Github\\Morpho\\python'\nif morpho_path not in sys.path:\n    sys.path.append(morpho_path)\n\nfrom morpho_lsystems import generate_2d, list_presets, PRESETS\n\n# Get inputs with defaults\npreset = IN[0] if IN[0] else \"tree\"\nstart_point = IN[1] if IN[1] else Point.ByCoordinates(0, 0, 0)\niterations = IN[2] if IN[2] else 4\nlength = IN[3] if IN[3] else 10\ndecay = IN[4] if IN[4] else 0.7\n\n# Generate the L-System pattern\nlines = generate_2d(\n    preset_or_axiom=preset,\n    start_point=start_point,\n    iterations=iterations,\n    length=length,\n    length_decay=decay\n)\n\n# Output the lines and available presets\nOUT = [lines, list_presets()]",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567001",
+      "Inputs": [
+        {
+          "Id": "input_py001a",
+          "Name": "IN[0]",
+          "Description": "Preset name",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "input_py001b",
+          "Name": "IN[1]",
+          "Description": "Start point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "input_py001c",
+          "Name": "IN[2]",
+          "Description": "Iterations",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "input_py001d",
+          "Name": "IN[3]",
+          "Description": "Length",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "input_py001e",
+          "Name": "IN[4]",
+          "Description": "Decay",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "output_py001",
+          "Name": "OUT",
+          "Description": "Result",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs Python script with CPython 3 engine"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "tree",
+      "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567002",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "output_str001",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
+      "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567003",
+      "Inputs": [
+        {
+          "Id": "input_pt001a",
+          "Name": "x",
+          "Description": "X coordinate",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "input_pt001b",
+          "Name": "y",
+          "Description": "Y coordinate",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "input_pt001c",
+          "Name": "z",
+          "Description": "Z coordinate",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "output_pt001",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Form a Point"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Integer",
+      "MaximumValue": 7,
+      "MinimumValue": 1,
+      "StepValue": 1,
+      "InputValue": 4,
+      "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567004",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "output_int001",
+          "Name": "",
+          "Description": "Int64",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Iterations slider"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 20.0,
+      "MinimumValue": 1.0,
+      "StepValue": 1.0,
+      "InputValue": 10.0,
+      "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567005",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "output_dbl001",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Length slider"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 1.0,
+      "MinimumValue": 0.3,
+      "StepValue": 0.05,
+      "InputValue": 0.7,
+      "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567006",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "output_dbl002",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Decay slider"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "output_str001",
+      "End": "input_py001a",
+      "Id": "c1234567-89ab-cdef-0123-456789abcde1",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "output_pt001",
+      "End": "input_py001b",
+      "Id": "c1234567-89ab-cdef-0123-456789abcde2",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "output_int001",
+      "End": "input_py001c",
+      "Id": "c1234567-89ab-cdef-0123-456789abcde3",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "output_dbl001",
+      "End": "input_py001d",
+      "Id": "c1234567-89ab-cdef-0123-456789abcde4",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "output_dbl002",
+      "End": "input_py001e",
+      "Id": "c1234567-89ab-cdef-0123-456789abcde5",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [],
+  "Author": "Morpho",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "4.0.0.0",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567001",
+        "Name": "L-System Generator",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 500.0,
+        "Y": 200.0
+      },
+      {
+        "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567002",
+        "Name": "Preset",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 100.0
+      },
+      {
+        "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567003",
+        "Name": "Start Point",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 200.0
+      },
+      {
+        "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567004",
+        "Name": "Iterations",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 350.0
+      },
+      {
+        "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567005",
+        "Name": "Segment Length",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 450.0
+      },
+      {
+        "Id": "d1e2f3a4-b5c6-7890-abcd-ef1234567006",
+        "Name": "Length Decay",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 550.0
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "c1234567-89ab-cdef-0123-456789abcdef",
+        "Title": "L-System Tree Generator",
+        "DescriptionText": "Available presets:\n- tree\n- fern\n- bush\n- seaweed\n- dragon\n- sierpinski\n- hilbert\n- gosper\n- binary_tree\n- crystal\n- snowflake\n\nTry changing the preset name to see different patterns!",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [],
+        "HasNestedGroups": false,
+        "Left": 50.0,
+        "Top": 50.0,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FF90EE90"
+      }
+    ],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

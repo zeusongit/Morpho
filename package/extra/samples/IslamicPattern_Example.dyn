@@ -1,0 +1,389 @@
+{
+  "Uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "IsCustomNode": false,
+  "Description": "Example demonstrating Islamic pattern generation with Morpho",
+  "Name": "IslamicPattern_Example",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "e1f2a3b4c5d67890abcdef1234567002",
+      "Name": "Radius",
+      "Type": "number",
+      "Type2": "number",
+      "Value": "50",
+      "MaximumValue": 100.0,
+      "MinimumValue": 10.0,
+      "StepValue": 5.0,
+      "NumberType": "Double",
+      "Description": "Produces numeric values"
+    },
+    {
+      "Id": "e1f2a3b4c5d67890abcdef1234567003",
+      "Name": "Star Points",
+      "Type": "number",
+      "Type2": "number",
+      "Value": "8",
+      "MaximumValue": 16.0,
+      "MinimumValue": 3.0,
+      "StepValue": 1.0,
+      "NumberType": "Integer",
+      "Description": "Produces integer values"
+    },
+    {
+      "Id": "e1f2a3b4c5d67890abcdef1234567004",
+      "Name": "Inner Ratio",
+      "Type": "number",
+      "Type2": "number",
+      "Value": "0.4",
+      "MaximumValue": 0.9,
+      "MinimumValue": 0.1,
+      "StepValue": 0.05,
+      "NumberType": "Double",
+      "Description": "Produces numeric values"
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "e1f2a3b4c5d67890abcdef1234567001",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "7f518a70f2af5f229d1f971c82f1c47b",
+          "Name": "x",
+          "Description": "X coordinate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "03c68bfad1675be98a4ffa07ba6ab91a",
+          "Name": "y",
+          "Description": "Y coordinate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3fb467963f925badb86c4c6e1bd801a5",
+          "Name": "z",
+          "Description": "Z coordinate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bc9bbb05f1b05cf8b906bcccdf3032be",
+          "Name": "Point",
+          "Description": "Point created by coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
+      "Replication": "Auto",
+      "Description": "Form a Point given 3 cartesian coordinates\n\nPoint.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 10.0,
+      "StepValue": 5.0,
+      "Id": "e1f2a3b4c5d67890abcdef1234567002",
+      "NodeType": "NumberInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bce516a08c6a54f1937b549f5081e916",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Produces numeric values",
+      "InputValue": 50.0
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NumberType": "Integer",
+      "MaximumValue": 16,
+      "MinimumValue": 3,
+      "StepValue": 1,
+      "Id": "e1f2a3b4c5d67890abcdef1234567003",
+      "NodeType": "NumberInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "155b7fb784f4522689db7b936e0070ec",
+          "Name": "",
+          "Description": "Int64",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Produces integer values",
+      "InputValue": 8
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NumberType": "Double",
+      "MaximumValue": 0.9,
+      "MinimumValue": 0.1,
+      "StepValue": 0.05,
+      "Id": "e1f2a3b4c5d67890abcdef1234567004",
+      "NodeType": "NumberInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d4f7c35e7eb956738cf878b69d896367",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Produces numeric values",
+      "InputValue": 0.4
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "35d81fd09e1e4333b9bb10cfc62a3d70",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "26ca93d472084d8b94703651241dacc8",
+          "Name": "center",
+          "Description": "The center point of the star.\n\nPoint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "38b00563857c446db74a47ce1ee1db95",
+          "Name": "radius",
+          "Description": "The outer radius of the star.\n\ndouble\nDefault value : 50",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "59d086c99c96468186cb261b7545eaae",
+          "Name": "points",
+          "Description": "The number of star points (typically 5, 6, 8, 10, or 12).\n\nint\nDefault value : 8",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1e4807b0c28a4a2fa39b5cc2b4f457ab",
+          "Name": "innerRatio",
+          "Description": "The ratio of inner radius to outer radius (0-1). Default is 0.4.\n\ndouble\nDefault value : 0.4",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9c16dead483842119d70dd6d38367d2a",
+          "Name": "curve",
+          "Description": "A closed PolyCurve representing the star polygon.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Morpho.Patterns.StarPolygon.Create@Autodesk.DesignScript.Geometry.Point,double,int,double",
+      "Replication": "Auto",
+      "Description": "Creates an N-pointed star polygon.\n\nStarPolygon.Create (center: Point, radius: double = 50, points: int = 8, innerRatio: double = 0.4): PolyCurve"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "bc9bbb05f1b05cf8b906bcccdf3032be",
+      "End": "26ca93d472084d8b94703651241dacc8",
+      "Id": "62884498b2ef4c7f816192aa1502db47",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "bce516a08c6a54f1937b549f5081e916",
+      "End": "38b00563857c446db74a47ce1ee1db95",
+      "Id": "5573af8eada443af9a490f33d8ad9c2f",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "155b7fb784f4522689db7b936e0070ec",
+      "End": "59d086c99c96468186cb261b7545eaae",
+      "Id": "4815205841a0415a929517256f45eef2",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d4f7c35e7eb956738cf878b69d896367",
+      "End": "1e4807b0c28a4a2fa39b5cc2b4f457ab",
+      "Id": "db478e1438814ce08136801a88341a77",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Morpho",
+      "Version": "1.0.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "35d81fd09e1e4333b9bb10cfc62a3d70"
+      ]
+    }
+  ],
+  "EnableLegacyPolyCurveBehavior": true,
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "4.1",
+      "Data": {}
+    }
+  ],
+  "Author": "Morpho",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "4.1.0.3436",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "e1f2a3b4c5d67890abcdef1234567001",
+        "Name": "Point.ByCoordinates",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 100.0
+      },
+      {
+        "Id": "e1f2a3b4c5d67890abcdef1234567002",
+        "Name": "Radius",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 250.0
+      },
+      {
+        "Id": "e1f2a3b4c5d67890abcdef1234567003",
+        "Name": "Star Points",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 350.0
+      },
+      {
+        "Id": "e1f2a3b4c5d67890abcdef1234567004",
+        "Name": "Inner Ratio",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 450.0
+      },
+      {
+        "Id": "35d81fd09e1e4333b9bb10cfc62a3d70",
+        "Name": "StarPolygon.Create",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 592.5706303378583,
+        "Y": 164.2918213484163
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "b123456789abcdef0123456789abcdef",
+        "Title": "Islamic Star Pattern Example",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "UserSetWidth": 0.0,
+        "UserSetHeight": 0.0,
+        "Nodes": [],
+        "HasNestedGroups": false,
+        "Left": 50.0,
+        "Top": 50.0,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "IsOptionalInPortsCollapsed": false,
+        "IsUnconnectedOutPortsCollapsed": false,
+        "HasToggledOptionalInPorts": false,
+        "HasToggledUnconnectedOutPorts": false,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 201.4026427246102,
+    "Y": 167.62678986557646,
+    "Zoom": 0.49935774833045793
+  }
+}

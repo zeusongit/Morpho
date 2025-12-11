@@ -1,0 +1,328 @@
+{
+  "Uuid": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+  "IsCustomNode": false,
+  "Description": "Example demonstrating Koch and Sierpinski fractal generation with Morpho",
+  "Name": "Fractal_Koch_Example",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "f1a2b3c4d5e67890abcdef1234567002",
+      "Name": "Size",
+      "Type": "number",
+      "Type2": "number",
+      "Value": "100",
+      "MaximumValue": 200.0,
+      "MinimumValue": 20.0,
+      "StepValue": 10.0,
+      "NumberType": "Double",
+      "Description": "Produces numeric values"
+    },
+    {
+      "Id": "f1a2b3c4d5e67890abcdef1234567003",
+      "Name": "Iterations",
+      "Type": "number",
+      "Type2": "number",
+      "Value": "4",
+      "MaximumValue": 6.0,
+      "MinimumValue": 0.0,
+      "StepValue": 1.0,
+      "NumberType": "Integer",
+      "Description": "Produces integer values"
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "f1a2b3c4d5e67890abcdef1234567001",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "ce38d45136965b53b2054cde96989b7f",
+          "Name": "x",
+          "Description": "X coordinate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fb8600d783825171b7196038fe6331a8",
+          "Name": "y",
+          "Description": "Y coordinate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1d2cc64c49f25e8da30dfb615133e0b1",
+          "Name": "z",
+          "Description": "Z coordinate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "96aa5c4aba635cc78a13b8c590e63880",
+          "Name": "Point",
+          "Description": "Point created by coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
+      "Replication": "Auto",
+      "Description": "Form a Point given 3 cartesian coordinates\n\nPoint.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NumberType": "Double",
+      "MaximumValue": 200.0,
+      "MinimumValue": 20.0,
+      "StepValue": 10.0,
+      "Id": "f1a2b3c4d5e67890abcdef1234567002",
+      "NodeType": "NumberInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "4c8e57311f6a579eb375485a26145bee",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Produces numeric values",
+      "InputValue": 100.0
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NumberType": "Integer",
+      "MaximumValue": 6,
+      "MinimumValue": 0,
+      "StepValue": 1,
+      "Id": "f1a2b3c4d5e67890abcdef1234567003",
+      "NodeType": "NumberInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1a760de31aea5db79cb4782aacdc8748",
+          "Name": "",
+          "Description": "Int64",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Produces integer values",
+      "InputValue": 4
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "a238cde92f704c26a02b0dc4fe1ff40b",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "136e64db5c19425a9369022d9408245c",
+          "Name": "center",
+          "Description": "The center point of the snowflake.\n\nPoint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6a47d4d5fd0c495ab183cd6e6f56d004",
+          "Name": "radius",
+          "Description": "The circumscribed radius.\n\ndouble\nDefault value : 100",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ee04974900444bb1a14ff6f3e2db2827",
+          "Name": "iterations",
+          "Description": "Number of fractal iterations (0-6 recommended).\n\nint\nDefault value : 4",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "52669fffb8fc4163a4e8500f29f7a661",
+          "Name": "curve",
+          "Description": "A PolyCurve representing the Koch snowflake.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Morpho.Patterns.Koch.Snowflake@Autodesk.DesignScript.Geometry.Point,double,int",
+      "Replication": "Auto",
+      "Description": "Creates a Koch snowflake fractal.\n\nKoch.Snowflake (center: Point, radius: double = 100, iterations: int = 4): PolyCurve"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "96aa5c4aba635cc78a13b8c590e63880",
+      "End": "136e64db5c19425a9369022d9408245c",
+      "Id": "92d47e681a6c45349f5875d936a36e53",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "4c8e57311f6a579eb375485a26145bee",
+      "End": "6a47d4d5fd0c495ab183cd6e6f56d004",
+      "Id": "57f97ba842ed416884aea98a6c5efa9c",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1a760de31aea5db79cb4782aacdc8748",
+      "End": "ee04974900444bb1a14ff6f3e2db2827",
+      "Id": "15a5273815784839921ec2e1b154be23",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Morpho",
+      "Version": "1.0.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "a238cde92f704c26a02b0dc4fe1ff40b"
+      ]
+    }
+  ],
+  "EnableLegacyPolyCurveBehavior": true,
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "4.1",
+      "Data": {}
+    }
+  ],
+  "Author": "Morpho",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "4.1.0.3436",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -6.705020904541016,
+      "EyeY": 12.431661605834961,
+      "EyeZ": 32.1634635925293,
+      "LookX": 7.729841232299805,
+      "LookY": -8.373992919921875,
+      "LookZ": -37.360897064208984,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "f1a2b3c4d5e67890abcdef1234567001",
+        "Name": "Point.ByCoordinates",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 100.0
+      },
+      {
+        "Id": "f1a2b3c4d5e67890abcdef1234567002",
+        "Name": "Size",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -119.43795027606097,
+        "Y": 277.98202050500106
+      },
+      {
+        "Id": "f1a2b3c4d5e67890abcdef1234567003",
+        "Name": "Iterations",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 100.0,
+        "Y": 472.2372474692151
+      },
+      {
+        "Id": "a238cde92f704c26a02b0dc4fe1ff40b",
+        "Name": "Koch.Snowflake",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 513.7340991561437,
+        "Y": 198.0907369143792
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "a123456789abcdef0123456789abcdef",
+        "Title": "Fractal Examples",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "UserSetWidth": 0.0,
+        "UserSetHeight": 0.0,
+        "Nodes": [],
+        "HasNestedGroups": false,
+        "Left": 50.0,
+        "Top": 50.0,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "IsOptionalInPortsCollapsed": false,
+        "IsUnconnectedOutPortsCollapsed": false,
+        "HasToggledOptionalInPorts": false,
+        "HasToggledUnconnectedOutPorts": false,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 205.18648190292697,
+    "Y": 159.95957650149398,
+    "Zoom": 0.50575386622493
+  }
+}
